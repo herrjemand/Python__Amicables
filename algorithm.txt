@@ -1,0 +1,46 @@
+	function factorising_bruteforce(number):
+		array = [number,[]]
+		begining = end = step = 0
+		if number mod 2 == 0 then
+			begining = 2 (because 1 is divider of any number)
+			end = number/2 (because maximum divider 
+							of an even number 
+							except it self is half of it self)
+			step = 1
+		else
+			begining = 3 (minimum possible divider of odd number)
+			end = number/3 (maximum divider of edd number except it self)
+			step = 2(odd can not be divided by 
+					even so step 2 will give 3,5,7,9...)
+
+		for i in range(begining, end, step)
+			if number mod i == 0
+				array[1] += [i]
+		return array
+
+	function prime(number):
+		if number not 0 or 1
+			if (571^(number - 1)) mod number == 1 
+				return True
+			else return False
+		else return False
+
+
+	function amicables(from,to)
+		amicables_dict = {}
+		for i in range(from,to)
+			temp_array = []
+			if i not prime and not in amicables_dict and not 0 or 1
+				temp_array += factorising_bruteforce(i)
+				number_1 = temp_array[0][0]
+				number_1_sum_div = sum(temp_array[0]) (returnes summ of all dividers)
+				if number_1 not prime and not in amicables
+					temp_array += factorising_bruteforce(number_1)
+					number_2 = temp_array[1][0]
+					number_2_sum_div = sum(temp_array[1]) (returnes summ of all dividers)
+					if number_1_sum_div == number_2 and number_2_sum_div == number_1
+						amicables_dict += temp_array[0]
+						amicables_dict += temp_array[1]
+						return number_1 and number_2
+
+		return amicables_dict
